@@ -1,0 +1,168 @@
+\documentclass[paper=a4, fontsize=11pt]{scrartcl} % A4 paper and 11pt font size
+
+\newcommand{\assignment}{2}
+%\newcommand{\duedate}{January 25, 2023}
+\input{hw-template.tex}
+% \author{
+%     \textbf{YOUR NAME} \\ 
+%     \textbf{YOUR GIT USERNAME} \\ 
+%     \textbf{YOUR E-MAIL}
+% }% INFORMATION
+
+\begin{document}
+
+\maketitle % Print the title
+
+%%%%%%%%%%%%%%%%%%%%
+\section{Getting Started}
+%%%%%%%%%%%%%%%%%%%%
+\subsection{Using Docker}
+My Dockerfile is Figure 1.1 and I mainly set the python version and install related packages.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=400pt]{images/Q1_docker.png}
+    \caption{Dockerfile}
+    \label{fig:data-files}
+    \end{figure}
+Figure 1.2 shows the process of Dockerfile build. And Figure 1.3 show the already existed images list information. The first one is produced by me for this assignment.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=400pt]{images/Q1_images_1_build.png}
+    \caption{images build}
+    \label{fig:data-files}
+    \end{figure}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=400pt]{images/Q1_images_2_list.png}
+    \caption{images list}
+    \label{fig:data-files}
+    \end{figure}
+Figure 1.4 is container related information.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=400pt]{images/Q1_container.jpg}
+    \caption{container}
+    \label{fig:data-files}
+    \end{figure}
+
+%%%%%%%%%%%%%%%%%%%%
+\section{Identifying All Sets}
+%%%%%%%%%%%%%%%%%%%%
+\subsection{}
+ In this part, we use data structure set in python to select all different items. We can read all lines or line by line and split the line, strip the line. Then we can use union operation in set to filter all duplicated items. And we use the data set basket\_data.csv for testing and the corresponding result is 21.
+    \begin{figure}[htbp]
+    \centering
+    \includegraphics[width=400pt]{images/Q2_1.png}
+    \caption{cardinality\_items}
+    \label{fig:data-files}
+    \end{figure}
+    
+ \subsection{}
+ For each item, you have two choice select or not. And for N different items, the total combination number is $2^N$. When we ignore the null set and the final result is   
+    $$2^N - 1$$
+    
+\subsection{}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=400pt]{images/Q2_3.png}
+    \caption{all\_itemsets}
+    \label{fig:data-files}
+    \end{figure}
+Use the function cardinality\_items, we can obtain all different items. Then we can use function combinations in itertools to list all possible combinations.
+    
+  
+\subsection{}
+The main step is to count the total number of S repeated in D.
+    \begin{figure}[htbp]
+    \centering
+    \includegraphics[width=400pt]{images/Q2_4.png}
+    \caption{prob\_S}
+    \label{fig:data-files}
+    \end{figure}
+
+    
+
+
+%%%%%%%%%%%%%%%%%%%%
+\section{The Netflix Challenge}
+%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%
+\subsection{Data Verification}
+%%%%%%%%%%%%%%%%%%%%
+From readme file, description of this data set are shown as below:
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=400pt]{images/Q3_1_1_description.png}
+    \caption{dataset description}
+    \label{fig:data-files}
+    \end{figure}
+Therefore, the following code mainly verify these three aspects. Firstly, the four training dataset will be merged. From Figure 3.2, we can see that the column is right. Then verify the columns' range. Finally, from Figure 3.3, it can be found that verification passed. 
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=400pt]{images/Q3_1_1_merge.png}
+    \caption{dataset merge}
+    \label{fig:data-files}
+    \end{figure}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=400pt]{images/Q3_1_1_verify.png}
+    \caption{range verification}
+    \label{fig:data-files}
+    \end{figure}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%
+\subsection{Data Analysis}
+\label{sec:data-analysis}
+%%%%%%%%%%%%%%%%%%%%
+
+\subsubsection{}
+There are total 100480507 records. From Figure 3.2, after dataset merge, examining its shape can count the number of records.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=400pt]{images/Q3_2_1.png}
+    \caption{dataset shape examination}
+    \label{fig:data-files}
+    \end{figure}
+
+\subsubsection{}
+Towards this problem, all customers gave ratings in the same day will be computed their mean values. From the Figure 3.5, we can see there were great change around 1999. At that time, very excellent or bad movies occurred. Or there were some controversial movies. After that, the mean rating value tend to decrease slightly. But after 2004, the mean value became to increase.
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=400pt]{images/Q3_2_2.png}
+    \caption{mean rating vs. date}
+    \label{fig:data-files}
+    \end{figure}
+
+\subsubsection{}
+Towards this problem, I will firstly give the concept of getting popular. In this experiment, I compute the mean rating stars of each year as corresponding value for that year. And then continue to compute their mean value as total mean value. Finally, using the total mean value subtract the first year rating
+as the improvement value. If improvement is positive, we can evaluate the movie become popular. According to the definition, the percentage of the films have gotten more popular over time is 59.76\%.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=400pt]{images/Q3_2_3.png}
+\caption{percentage of the films become popular}
+\label{fig:data-files}
+\end{figure}
+
+\subsubsection{}
+For this problem, films re-released can be seen as file title occurring at least twice in movie\_title.csv. To simplify this step, we use duplicate function in pandas to count the result and 473 was obtained from Figure 3.7.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=400pt,height=60pt]{images/Q3_2_4.png}
+\caption{number of films re-released}
+\label{fig:data-files}
+\end{figure}
+
+\subsubsection{}
+We may care about the type of different movies. In movie titles, we can extract its information about its type and we can explore the ratings over time and type. It may provide some useful information about which type of films are most popular nowadays.
+
+\subsubsection{}
+We may care about the interests of different customers. There are huge amount of records. If we can recommend someone a new movie according to similar interests shared by other people, it will provide better service. But there is still a challenge to deal with the computation cost.
+
+
+
+\end{document}
